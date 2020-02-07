@@ -74,7 +74,7 @@ UDP服务器实现比较简单，由一个单线程的事件循环实现，直�
 
 ## 5.网关服务器
 
-![](/image/onlygateway.png)
+![](/image/OnlyGateWay.png)
 网关服务器负责直接和客户端进行交互，在网关服务器中共有三种线程
 
 1. RouteMessageClientThread。该线程作为路由信息服务器的客户端，从任务队列中取得需要请求的modid和cmdid，并发送请求到路由信息服务器中拉去对应的路由信息，并且根据新获取的路由信息更新网关服务器中的路由信息。
@@ -94,7 +94,7 @@ UDP服务器实现比较简单，由一个单线程的事件循环实现，直�
 ![](/image/routemap.png)
 
 每个LoadBalance中保存着该cmdid和modid所对应的所有主机地址，且将他们分别放置在不同的队列中，一个是空闲队列，一个是超载队列。
-![](/image/loadbalance.png)
+![](/image/LoadBalance.png)
 
 当每次客户端来获取路由信息时，UDP服务器根据请求的modid和cmdid找到对应的LoadBalance，并从空闲队列的队首中取出一个主机信息发送给客户端。然后将队首的主机信息放到空闲队列尾端中。
 
