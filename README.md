@@ -91,7 +91,7 @@ UDP服务器实现比较简单，由一个单线程的事件循环实现，直�
 #### 6.2 网关负载均衡
 
 网关服务器中的三个UDP服务器，它们只管理(modid+cmdid)%3等于自身编号的服务路由信息。
-![](routemap.png)
+![](/image/routemap.png)
 
 每个LoadBalance中保存着该cmdid和modid所对应的所有主机地址，且将他们分别放置在不同的队列中，一个是空闲队列，一个是超载队列。
 ![](/image/loadbalance.png)
