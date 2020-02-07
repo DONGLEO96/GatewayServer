@@ -257,3 +257,16 @@ UDP服务器实现比较简单，由一个单线程的事件循环实现，直�
 即将服务器的配置数据写入RouteData中，将RouteVersion中的版本信息更新为修改时的时间戳，在RouteChange表中记录的是本次修改的服务器modid/cmdid
 
 删除或者修改时也如此修改，在修改RoutaData的同时更新RouteVersion版本信息，并将修改的服务表示符modid/cmdid写入到RouteChange中。
+
+## 11.客户端
+
+为客户端留出了三个接口
+
+	int GetHost(int modid, int cmdid, string& ip, int& port);
+	//获取modid/cmdid所标识服务的其中一个主机ip:port	
+	int GetRouteInfo(int modid, int cmdid, vector<pair<string, int>>& hosts);
+	//获取modid/cmdid所标识的服务的所有主机	
+	void report(int modid, int cmdid, string& ip, int& port, int resultcode);
+	/客户端向网关服务器上报对本次服务调用的结果
+
+三个接口都在ApiClient类中。可以通过继承该类，使用三个接口，并实现其他业务功能。
