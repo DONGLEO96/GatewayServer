@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 			printf("Get Route Info:\n");
 			printf("modid=%d\n", modid);
 			printf("cmdid=%d\n", cmdid);
-			for (int i = 0; i < res.size(); ++i)
+			for (int i = 0; i < static_cast<int>(res.size()); ++i)
 			{
 				printf("%s:%d", res[i].first.data(), res[i].second);
 				printf("\n");

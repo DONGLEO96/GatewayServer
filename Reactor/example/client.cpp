@@ -8,7 +8,7 @@ void busi(const char* data, size_t len, int msgid, net_conn* conn)
 	string msg(data, len);
 	printf("recv server:[%s]\n", msg.data());
 	printf("msgid:[%d]\n", msgid);
-	printf("len:[%d]\n", len);
+	printf("len:[%d]\n", static_cast<int>(len));
 }
 
 void connCompleteCallback(net_conn* conn)

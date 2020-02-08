@@ -73,7 +73,7 @@ void DnsRoute::BuildMaps()
 		unsigned long long key = (static_cast<unsigned long long>(modId) << 32) + cmdId;
 		unsigned long long value = (static_cast<unsigned long long>(ip) << 32) + port;
 		
-		printf("modID = %d, cmdID = %d, ip = %lu, port = %d\n", modId, cmdId, ip, port);
+		printf("modID = %d, cmdID = %d, ip = %u, port = %d\n", modId, cmdId, ip, port);
 
 		datamap[key].insert(value);
 	}
@@ -192,7 +192,7 @@ vector<unsigned long long> DnsRoute::LoadChange()
 	unsigned long long linenum = mysql_num_rows(result);
 	if (linenum == 0)
 	{
-		fprintf(stderr, "No version in table RouteChange %s\n", mysql_errno(&dbconn));
+		fprintf(stderr, "No version in table RouteChange %s\n", mysql_error(&dbconn));
 		return res;
 	}
 
