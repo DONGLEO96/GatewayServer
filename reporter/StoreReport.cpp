@@ -25,6 +25,7 @@ StoreReport::StoreReport()
 
 StoreReport::~StoreReport()
 {
+	//mysql_close(&dbconn);
 }
 
 void StoreReport::store(ReportStatusReq req)
@@ -37,8 +38,8 @@ void StoreReport::store(ReportStatusReq req)
 		snprintf(sql, 1024, "INSERT INTO ServerCallStatus (modid,cmdid,ip,port,caller,succ_cnt,err_cnt,ts,overload) VALUES (%d,%d,%u,%u,%u,%u,%u,%u,%d) ON DUPLICATE KEY UPDATE succ_cnt=%u,err_cnt=%u,ts=%u,overload=%d",
 			req.modid, req.cmdid, res.ip, res.port, req.caller, res.succ, res.err, req.ts, overlload, res.succ, res.err, req.ts, overlload);
 		
-		printf("INSERT INTO ServerCallStatus (modid,cmdid,ip,port,caller,succ_cnt,err_cnt,ts,overload) VALUES (%d,%d,%u,%u,%u,%u,%u,%u,%d) ON DUPLICATE UPDATE succ_cnt=%u,err_cnt=%u,ts=%u,overload=%d\n",
-			req.modid, req.cmdid, res.ip, res.port, req.caller, res.succ, res.err, req.ts, overlload, res.succ, res.err, req.ts, overlload);
+//		printf("INSERT INTO ServerCallStatus (modid,cmdid,ip,port,caller,succ_cnt,err_cnt,ts,overload) VALUES (%d,%d,%u,%u,%u,%u,%u,%u,%d) ON DUPLICATE UPDATE succ_cnt=%u,err_cnt=%u,ts=%u,overload=%d\n",
+//			req.modid, req.cmdid, res.ip, res.port, req.caller, res.succ, res.err, req.ts, overlload, res.succ, res.err, req.ts, overlload);
 		mysql_ping(&dbconn);
 
 		if (mysql_real_query(&dbconn, sql, strlen(sql)) != 0)

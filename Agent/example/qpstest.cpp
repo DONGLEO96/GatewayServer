@@ -23,17 +23,19 @@ int main(int argc, char* argv[])
 		int ret = client.GetHost(modid, cmdid, ip, port);
 		if (ret == 0)
 		{
+			client.report(modid, cmdid, ip, port, 0);
 			succ += 1;
 		}
 		else
 		{
 			err += 1;
 		}
+		
 	}
 	int end = time(NULL);
 	int qps = succ / (end - begin);
 	double succrate = (double)(succ) / 50000;
-	printf("qps=%d,success rate=%d", qps, succrate);
+	printf("qps=%d,success rate=%lf", qps, succrate);
 
 	return 0;
 }
