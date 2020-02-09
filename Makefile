@@ -24,6 +24,7 @@ link:
 	g++ ./test/reportService.o ./test/lib/reactor.a ./test/StoreReport.o ./test/ConfigFile.o -lpthread -lmysqlclient -o ./app/reportServer
 	g++ ./test/GenerateFile.o ./test/ConfigFile.o ./test/lib/reactor.a -o ./app/GenerateConfig 
 	g++ ./test/uclient.o ./test/lib/reactor.a $(LIBS) -o ./app/UdpClient
+	g++ ./test/qpstest.o ./test/ApiClient.o ./test/json_reader.o ./test/json_value.o ./test/json_writer.o -o ./app/qpstest
 
 clean:
 	rm -rf test

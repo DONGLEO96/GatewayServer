@@ -8,3 +8,4 @@ all:
 	$(CC) $(FLAGS) HostDetailedInfo.cpp -o ../test/HostDetailedInfo.o
 	$(CC) $(FLAGS) RouteLoadBalance.cpp -o ../test/RouteLoadBalance.o
 	$(CC) $(FLAGS) example/AgentClient.cpp -o ../test/AgentClient.o
+	$(CC) $(FLAGS) example/qpstest.cpp -o ../test/qpstest.o
