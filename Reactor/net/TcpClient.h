@@ -10,7 +10,7 @@
 #include"net_conn.h"
 class TcpClient;
 
-class TcpClient:net_conn
+class TcpClient:public net_conn
 {
 public:
 	TcpClient(EventLoop* loop, const char* ip, short port, const char *name);

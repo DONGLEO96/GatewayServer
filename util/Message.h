@@ -11,7 +11,10 @@ enum MessageID
 	HostResponseID,
 	ReportRequestID,
 	ApiRouteRequestID,
-	ApiRouteResposeID
+	ApiRouteResposeID,
+	HeartBeatID,
+	RegisterRequestID,
+	RegisterResponseID,
 };
 enum CallResult
 {
@@ -74,17 +77,25 @@ struct ReportRequest
 	HostInfo host;
 	int result;
 };
-//struct HostInfo
-//{
-//	int ip;
-//	int port;
-//	unsigned int vsucc;
-//	unsigned int verr;
-//	unsigned int rsucc;
-//	unsigned int rerr;
-//	unsigned int continue_succ;
-//	unsigned int continue_err;
-//};
+struct RegisterRequest
+{
+	int modid;
+	int cmdid;
+	unsigned int ip;
+	int port;
+};
+struct RegisterResqonse
+{
+	int modid;
+	int cmdid;
+	int retcode;
+};
+struct HeartBeat
+{
+	unsigned ip;
+	int port;
+};
+
 
 struct HostRespose
 {

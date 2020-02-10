@@ -1,4 +1,4 @@
-SUBDIRS=Agent json Reactor reporter util dns
+SUBDIRS=Agent json Reactor reporter util dns register
 CC=g++
 LIBS=-lpthread -lmysqlclient
 
@@ -25,7 +25,8 @@ link:
 	g++ ./test/GenerateFile.o ./test/ConfigFile.o ./test/lib/reactor.a -o ./app/GenerateConfig 
 	g++ ./test/uclient.o ./test/lib/reactor.a $(LIBS) -o ./app/UdpClient
 	g++ ./test/qpstest.o ./test/ApiClient.o ./test/json_reader.o ./test/json_value.o ./test/json_writer.o -o ./app/qpstest
-
+	g++ ./test/registerServer.o ./test/ConfigFile.o ./test/lib/reactor.a ./test/WriteToDataBase.o $(LIBS) -o ./app/registerServer
+	g++ ./test/registerClient.o ./test/lib/reactor.a $(LIBS) -o ./app/registerClient
 clean:
 	rm -rf test
 	rm -rf app

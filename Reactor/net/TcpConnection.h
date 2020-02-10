@@ -4,7 +4,7 @@
 #include"../IOBuff/OutputBuff.h"
 #include"net_conn.h"
 #include<memory>
-class TcpConnection:net_conn
+class TcpConnection:public net_conn
 {
 public:
 	TcpConnection(int connfd, EventLoop* loop);

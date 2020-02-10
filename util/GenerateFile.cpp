@@ -44,12 +44,20 @@ int main()
 	loadbalance["overloadtimeout"] = 15;
 	loadbalance["windowerrrate"] = 0.7;
 	
+	Json::Value Register;
+	Register["threadnum"] = 3;
+	Register["ip"] = "127.0.0.1";
+	Register["port"] = 9002;
+	Register["maxconn"] = 1024;
+	Register["writethread"] = 3;
+
 	Json::Value config;
 	config["reactor"] = jv;
 	config["report"] = report;
 	config["mysql"] = mysql;
 	config["dns"] = dns;
 	config["loadbalance"] = loadbalance;
+	config["register"] = Register;
 	string value = jw.write(config);
 	
 	
