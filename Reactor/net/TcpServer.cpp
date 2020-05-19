@@ -233,11 +233,11 @@ void TcpServer::do_accept()
 
 				if (pool == NULL)
 				{
-					ThreadQueue<TaskMsg>* queue = pool->getThread();
-					TaskMsg task;
-					task.type = NEW_CONN;
-					task.connfd = connfd;
-					queue->addTask(task);
+					//ThreadQueue<TaskMsg>* queue = pool->getThread();
+					//TaskMsg task;
+					//task.type = NEW_CONN;
+					//task.connfd = connfd;
+					//queue->addTask(task);
 
 					TcpConnection* conn = new TcpConnection(connfd, _loop);
 
